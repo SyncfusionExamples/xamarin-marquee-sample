@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MarqueeLabelSample.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behavior="clr-namespace:MarqueeLabelSample.Behaviors"
+    xmlns:customControls="clr-namespace:MarqueeLabelSample.CustomControl"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="mainPage"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="{StaticResource AppBackgroundColor}"
+    mc:Ignorable="d">
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto, *">
+            <customControls:CustomScrollView
+                Grid.Row="0"
+                HeightRequest="45"
+                HorizontalOptions="FillAndExpand"
+                HorizontalScrollBarVisibility="Never"
+                IsEnabled="{OnPlatform Android=False}"
+                Orientation="Horizontal">
+                <StackLayout
+                    Padding="0"
+                    BackgroundColor="{StaticResource SeparatorBackgroundColor}"
+                    Orientation="Horizontal"
+                    Spacing="0">
+                    <StackLayout.Behaviors>
+                        <behavior:MarqueeBehavior PageWidth="{Binding Path=Width, Source={x:Reference mainPage}}" />
+                    </StackLayout.Behaviors>
+                </StackLayout>
+            </customControls:CustomScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
